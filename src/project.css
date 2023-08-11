@@ -1,0 +1,91 @@
+.fieldset {
+  width: 800px;
+}
+.submit-button {
+  background-color: rgb(183, 156, 207);
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bolder;
+  transition: all ease-in-out 200ms;
+  margin: 5px 10px 40px 0;
+  margin-bottom: 0px;
+}
+
+.submit-button:hover {
+  background-color: rgb(189, 231, 231);
+  cursor: pointer;
+}
+
+.text-box {
+  width: 456px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: all ease-in-out 200ms;
+}
+
+.text-box:hover {
+  border: 3px solid black;
+}
+.emoji {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 80px 0;
+}
+
+.current-temperature {
+  font-weight: bold;
+  margin-left: 100px;
+}
+
+.body {
+  background-color: honeydew;
+  width: 70%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+.date {
+  font-size: 15px;
+  margin-left: 100px;
+}
+.city {
+  font-size: 34px;
+  font-family: "Oleo Script", cursive;
+}
+button {
+  border-radius: 4px;
+  padding: 5px 5px;
+  background-color: rgb(101, 199, 101);
+  font-weight: bolder;
+  transition: all ease-in-out 200ms;
+}
+button:hover {
+  background-color: white;
+}
+p {
+  font-size: 8px;
+  font-weight: bold;
+}
+
+img {
+  width: 70px;
+}
+img:hover {
+  width: 80px;
+}
+header {
+  text-align: center;
+  margin: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bolder;
+  font-size: 30px;
+}
+em {
+  font-weight: 200px;
+}
+.inputs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
