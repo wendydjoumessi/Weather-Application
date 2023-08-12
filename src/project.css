@@ -34,16 +34,24 @@
 }
 
 .current-temperature {
-  font-weight: bold;
   margin-left: 100px;
 }
-
+strong {
+  font-size: 40px;
+  line-height: 1;
+}
+.temperature-units {
+  font-size: 10px;
+  position: relative;
+  top: -20px;
+}
 .body {
   background-color: honeydew;
   width: 70%;
   display: block;
   margin: 0 auto;
-  border-radius: 20px;
+  border-radius: px;
+  border: 2px solid rgb(172, 172, 172);
 }
 .date {
   font-size: 15px;
@@ -52,12 +60,22 @@
 .city {
   font-size: 34px;
   font-family: "Oleo Script", cursive;
+  text-transform: capitalize;
 }
 .link {
   font-size: 10px;
 }
 .footer {
   margin-top: 30px;
+}
+#description {
+  margin-bottom: 5px;
+  margin-top: 0px;
+  position: relative;
+  top: -10px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 15px;
+  text-transform: capitalize;
 }
 button {
   border-radius: 4px;

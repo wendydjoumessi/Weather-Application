@@ -43,13 +43,21 @@ function getCity(event) {
 function DisplayTemperature(response) {
   console.log(response);
   let searchInput = document.querySelector("#search-box");
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
   let city = searchInput.value;
   let h5 = document.querySelector("h5");
+  let temp = document.querySelector("#Temperature");
   let CITY = document.querySelector(".city");
+  let description = document.querySelector("#description");
   let temperature = Math.round(response.data.main.temp);
   if (city) {
     h5.innerHTML = `It is currently ${temperature}°C in ${city}`;
     CITY.innerHTML = city;
+    temp.innerHTML = temperature;
+    description.innerHTML = response.data.weather[0].description;
+    humidity.innerHTML = `humidity ${response.data.main.humidity}%`;
+    wind.innerHTML = `wind ${response.data.wind.speed}Km\h`;
   } else {
     alert("Please enter a city name");
     h5.innerHTML = null;
