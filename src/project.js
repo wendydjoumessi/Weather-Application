@@ -45,9 +45,11 @@ function DisplayTemperature(response) {
   let searchInput = document.querySelector("#search-box");
   let city = searchInput.value;
   let h5 = document.querySelector("h5");
+  let CITY = document.querySelector(".city");
   let temperature = Math.round(response.data.main.temp);
   if (city) {
     h5.innerHTML = `It is currently ${temperature}°C in ${city}`;
+    CITY.innerHTML = city;
   } else {
     alert("Please enter a city name");
     h5.innerHTML = null;
@@ -57,7 +59,7 @@ function DisplayTemperature(response) {
 let Search = document.querySelector("#search-form");
 Search.addEventListener("submit", getCity);
 
-// bonus point
+// display current location
 
 function ShowLocation(response) {
   let h5 = document.querySelector("h5");
