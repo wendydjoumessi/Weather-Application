@@ -1,6 +1,5 @@
-function DateFormat() {
-  let DATE = document.querySelector(".date");
-  let now = new Date();
+function DateFormat(timestamp) {
+  let now = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -14,16 +13,15 @@ function DateFormat() {
   let time = now.getHours();
   let minute = now.getMinutes();
   if (time < 10 && minute < 10) {
-    DATE.innerHTML = `${day}  0${time} : 0${minute}`;
+    return `last update; ${day}  0${time} : 0${minute}`;
   } else if (time > 10 && minute < 10) {
-    DATE.innerHTML = `${day}  ${time} : 0${minute}`;
+    return `last update; ${day}  ${time} : 0${minute}`;
   } else if (time < 10 && minute > 10) {
-    DATE.innerHTML = `${day}  0${time} : ${minute}`;
+    return `${day}  0${time} : ${minute}`;
   } else {
-    DATE.innerHTML = `${day}  ${time} : ${minute}`;
+    return `last update ${day}  ${time} : ${minute}`;
   }
 }
-DateFormat();
 
 //display city function
 
@@ -41,7 +39,6 @@ function getCity(event) {
 }
 
 function DisplayTemperature(response) {
-  console.log(response);
   let searchInput = document.querySelector("#search-box");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
@@ -50,14 +47,17 @@ function DisplayTemperature(response) {
   let temp = document.querySelector("#Temperature");
   let CITY = document.querySelector(".city");
   let description = document.querySelector("#description");
+  let Date = document.querySelector("#date");
   let temperature = Math.round(response.data.main.temp);
+
   if (city) {
     h5.innerHTML = `It is currently ${temperature}°C in ${city}`;
     CITY.innerHTML = city;
     temp.innerHTML = temperature;
     description.innerHTML = response.data.weather[0].description;
     humidity.innerHTML = `humidity ${response.data.main.humidity}%`;
-    wind.innerHTML = `wind ${response.data.wind.speed}Km\h`;
+    wind.innerHTML = `wind ${Math.round(response.data.wind.speed)}Km\h`;
+    Date.innerHTML = DateFormat(response.data.dt * 1000);
   } else {
     alert("Please enter a city name");
     h5.innerHTML = null;
@@ -77,7 +77,6 @@ function ShowLocation(response) {
 }
 
 function currentLocation(position) {
-  console.log(position);
   let apiKey = "c688de8b6b60cb97fb72684edb3693ab";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
