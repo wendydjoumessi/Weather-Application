@@ -25,6 +25,30 @@ function DateFormat(timestamp) {
   }
 }
 
+// display forecast element
+
+function DisplayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun" , "Mon","Tues","Wed","Thur","Fri"];
+  days.forEach(function(day){
+ forecastHTML =
+   forecastHTML +
+   `
+              <div class="col-2">
+                <div class="weather-forecast-date">${day}</div>
+                <img src="images/weather5.png" alt="day one" /><br />
+                <div class="weather=forecast=temperature">
+                  <span class="weather-forecast-temperature-max">29°</span>
+                  <span class="weather-forecast-temperature-min">28°</span>
+                </div>
+              </div>`;
+  })
+ 
+  
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 //display city function
 
 function getCity(event) {
@@ -109,11 +133,10 @@ function ShowFahrenheitTemperature(event) {
 
 function ShowcelsiusTemperature(event) {
   event.preventDefault();
-   celsiusLink.classList.add("active");
-   fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#Temperature");
   temperatureElement.innerHTML = CelsiusTemperature;
-  
 }
 
 let CelsiusTemperature = null;
@@ -126,3 +149,4 @@ fahrenheitLink.addEventListener("click", ShowFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", ShowcelsiusTemperature);
+DisplayForecast();
