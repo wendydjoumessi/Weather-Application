@@ -27,10 +27,16 @@
 .text-box:hover {
   border: 3px solid black;
 }
-.emoji {
+.weather-forecast {
   font-size: 12px;
   font-weight: bold;
   margin: 80px 0;
+}
+.weather-forecast-date {
+  opacity: 0.6;
+}
+.weather-forecast-temperature-min{
+  opacity: 0.5;
 }
 
 .current-temperature {
@@ -45,7 +51,6 @@ strong {
   font-size: 10px;
   position: relative;
   top: -20px;
-  
 }
 
 .body {
