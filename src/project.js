@@ -12,11 +12,13 @@ function DateFormat(timestamp) {
   let day = days[now.getDay()];
   let time = now.getHours();
   let minute = now.getMinutes();
+  let currentDay = document.querySelector("#current-day");
+  currentDay.innerHTML = day;
   if (time < 10 && minute < 10) {
     return `last update; ${day}  0${time} : 0${minute}`;
-  } else if (time > 10 && minute < 10) {
+  } else if (time >= 10 && minute < 10) {
     return `last update; ${day}  ${time} : 0${minute}`;
-  } else if (time < 10 && minute > 10) {
+  } else if (time < 10 && minute >= 10) {
     return `${day}  0${time} : ${minute}`;
   } else {
     return `last update ${day}  ${time} : ${minute}`;
@@ -39,6 +41,7 @@ function getCity(event) {
 }
 
 function DisplayTemperature(response) {
+  console.log(response);
   let searchInput = document.querySelector("#search-box");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
@@ -48,6 +51,7 @@ function DisplayTemperature(response) {
   let CITY = document.querySelector(".city");
   let description = document.querySelector("#description");
   let Date = document.querySelector("#date");
+  let icon = document.querySelector("#icon");
   let temperature = Math.round(response.data.main.temp);
 
   if (city) {
@@ -58,6 +62,11 @@ function DisplayTemperature(response) {
     humidity.innerHTML = `humidity ${response.data.main.humidity}%`;
     wind.innerHTML = `wind ${Math.round(response.data.wind.speed)}Km\h`;
     Date.innerHTML = DateFormat(response.data.dt * 1000);
+    icon.setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    icon.setAttribute("alt", `${response.data.weather[0].description}`);
   } else {
     alert("Please enter a city name");
     h5.innerHTML = null;

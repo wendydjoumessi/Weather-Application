@@ -39,12 +39,14 @@
 strong {
   font-size: 40px;
   line-height: 1;
+  margin-left: 0px;
 }
 .temperature-units {
   font-size: 10px;
   position: relative;
   top: -20px;
 }
+
 .body {
   background-color: honeydew;
   width: 70%;
@@ -91,6 +93,9 @@ button:hover {
 p {
   font-size: 8px;
   font-weight: bold;
+}
+#icon {
+  width: 70px;
 }
 
 img {
