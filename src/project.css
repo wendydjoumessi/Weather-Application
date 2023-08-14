@@ -45,6 +45,7 @@ strong {
   font-size: 10px;
   position: relative;
   top: -20px;
+  
 }
 
 .body {
@@ -78,6 +79,20 @@ strong {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 15px;
   text-transform: capitalize;
+}
+.inputs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.current-temperature .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+.current-temperature .active:hover {
+  text-decoration: none;
 }
 
 button {
@@ -113,9 +128,4 @@ header {
 }
 em {
   font-weight: 200px;
-}
-.inputs {
-  display: flex;
-  align-items: center;
-  margin-bottom: 50px;
 }
