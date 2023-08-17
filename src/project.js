@@ -25,25 +25,45 @@ function DateFormat(timestamp) {
   }
 }
 
+// format Days
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  return days[day];
+}
+
 // display forecast data
 
 function DisplayForecast(response) {
   let forecast = response.data.daily;
+  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
               <div class="col-2">
-                <div class="weather-forecast-date">${day}</div>
-                <img src="images/weather5.png" alt="day one" /><br />
+                <div class="weather-forecast-date">${formatDay(
+                  forecastDay.time
+                )}</div>
+                <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                  forecastDay.condition.icon
+                }.png" /><br />
                 <div class="weather=forecast=temperature">
-                  <span class="weather-forecast-temperature-max">29°</span>
-                  <span class="weather-forecast-temperature-min">28°</span>
+                  <span class="weather-forecast-temperature-max">${Math.round(
+                    forecastDay.temperature.maximum
+                  )}°</span>
+                  <span class="weather-forecast-temperature-min">${Math.round(
+                    forecastDay.temperature.minimum
+                  )}°</span>
                 </div>
               </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -113,6 +133,7 @@ Search.addEventListener("submit", getCity);
 // display current location
 
 function ShowLocation(response) {
+  let icon = document.querySelector("#icon");
   let h5 = document.querySelector("h5");
   let city = response.data.name;
   let temperature = Math.round(response.data.main.temp);
@@ -121,6 +142,11 @@ function ShowLocation(response) {
   CITY.innerHTML = city;
   let currentTemperature = document.querySelector("#Temperature");
   currentTemperature.innerHTML = temperature;
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", `${response.data.weather[0].description}`);
 }
 
 function currentLocation(position) {
