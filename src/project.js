@@ -173,6 +173,3 @@ let CelsiusTemperature = null;
 
 let Button = document.querySelector("button");
 Button.addEventListener("click", display);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", ShowcelsiusTemperature);
